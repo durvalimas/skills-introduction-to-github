@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo de Copas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Join screen -->
+  <div id="joinScreen" class="screen">
+    <div class="join-box">
+      <h1>♥ Jogo de Copas</h1>
+      <p>Até 4 jogadores — vagas vazias serão preenchidas por IA</p>
+      <input id="nameInput" type="text" placeholder="Seu nome" maxlength="20" />
+      <button id="joinBtn">Entrar na Sala</button>
+      <div id="joinError" class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- Lobby screen -->
+  <div id="lobbyScreen" class="screen hidden">
+    <div class="lobby-box">
+      <h2>♥ Sala de Espera</h2>
+      <div id="seatList"></div>
+      <p class="hint">Vagas vazias serão preenchidas por jogadores IA ao iniciar.</p>
+      <button id="startBtn">Iniciar Jogo</button>
+    </div>
+  </div>
+
+  <!-- Game screen -->
+  <div id="gameScreen" class="screen hidden">
+    <div id="gameTable">
+      <!-- Score panel -->
+      <div id="scorePanel">
+        <h3>Pontuação</h3>
+        <div id="scoreList"></div>
+      </div>
+
+      <!-- Opponents (top, left, right) -->
+      <div id="topPlayer" class="opponent-area">
+        <div class="player-name" id="topName"></div>
+        <div class="card-back-row" id="topCards"></div>
+      </div>
+      <div id="leftPlayer" class="opponent-area">
+        <div class="player-name" id="leftName"></div>
+        <div class="card-back-col" id="leftCards"></div>
+      </div>
+      <div id="rightPlayer" class="opponent-area">
+        <div class="player-name" id="rightName"></div>
+        <div class="card-back-col" id="rightCards"></div>
+      </div>
+
+      <!-- Trick area -->
+      <div id="trickArea">
+        <div id="trickCards"></div>
+        <div id="phaseMsg"></div>
+      </div>
+
+      <!-- Player hand -->
+      <div id="bottomPlayer">
+        <div class="player-name" id="myName"></div>
+        <div id="myHand"></div>
+      </div>
+    </div>
+
+    <!-- Pass panel -->
+    <div id="passPanel" class="panel hidden">
+      <h3 id="passTitle">Escolha 3 cartas para passar</h3>
+      <p id="passCount" class="pass-count">0 / 3 cartas selecionadas</p>
+      <button id="confirmPass" disabled>Confirmar Passe</button>
+    </div>
+  </div>
+
+  <!-- Round end overlay -->
+  <div id="roundEndOverlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2>Fim da Rodada</h2>
+      <div id="roundEndScores"></div>
+      <p class="hint">Próxima rodada começará em instantes…</p>
+    </div>
+  </div>
+
+  <!-- Game over overlay -->
+  <div id="gameOverOverlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2>♥ Fim de Jogo ♥</h2>
+      <div id="gameOverScores"></div>
+      <button id="newGameBtn">Nova Partida</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
