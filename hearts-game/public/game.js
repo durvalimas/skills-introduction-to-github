@@ -299,7 +299,12 @@ socket.on('joined', ({ seatIndex }) => {
 
 socket.on('gameState', (s) => {
   state = s;
-  passSelection = passSelection.filter(c => s.hand && s.hand.includes(c));
+  // Clear pass selection when pass phase ends or when our pass was accepted
+  if (s.phase !== 'passing' || s.pendingPass) {
+    passSelection = [];
+  } else {
+    passSelection = passSelection.filter(c => s.hand && s.hand.includes(c));
+  }
 
   if (s.phase === 'waiting') {
     joinScreen.classList.add('hidden');

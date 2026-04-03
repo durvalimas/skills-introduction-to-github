@@ -115,8 +115,8 @@ button:disabled { background: #888; cursor: default; }
 }
 
 /* Card back rows */
-.card-back-row { display: flex; flex-direction: row; gap: -8px; flex-wrap: nowrap; }
-.card-back-col { display: flex; flex-direction: column; gap: -8px; }
+.card-back-row { display: flex; flex-direction: row; flex-wrap: nowrap; }
+.card-back-col { display: flex; flex-direction: column; }
 
 .card-back {
   width: 36px; height: 52px;
@@ -183,7 +183,7 @@ button:disabled { background: #888; cursor: default; }
 /* My hand */
 #myHand {
   display: flex; flex-wrap: nowrap; align-items: flex-end;
-  gap: -10px; justify-content: center;
+  justify-content: center;
   min-height: 100px;
   padding: 0 8px;
 }

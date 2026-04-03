@@ -351,7 +351,7 @@ function playCard(seatIndex, card) {
   game.hands[seatIndex] = hand.filter(c => c !== card);
 
   // Break hearts
-  if (cardSuit(card) === 'H' || card === 'QS') {
+  if (cardSuit(card) === 'H') {
     game.heartsBroken = true;
   }
 
